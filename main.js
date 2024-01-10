@@ -85,5 +85,11 @@ function draw() {
     })
 }
 
+document.addEventListener('keydown', event => {
+    if( event.key === 'ArrowLeft') piece.position.x--
+    if( event.key === 'ArrowRight') piece.position.x++
+    if( event.key === 'ArrowDown') piece.position.y++
+})
+
 update()
 
