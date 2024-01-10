@@ -99,7 +99,13 @@ document.addEventListener('keydown', event => {
             piece.position.x--
         }
     }
-    if( event.key === 'ArrowDown') piece.position.y++
+
+    if( event.key === 'ArrowDown'){
+        piece.position.y++
+        if (checkCollision()){
+            piece.position.y--
+        }
+    }
 })
 // Ver colisiones
 function checkCollision() {
