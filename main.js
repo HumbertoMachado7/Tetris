@@ -56,6 +56,30 @@ const piece = {
     ]
 }
 
+// 9. random pieces
+const PIECES = [
+    [
+    [1, 1],
+    [1, 1]
+    ],
+    [
+    [1, 1, 1, 1]
+    ],
+    [
+        [0, 1, 0],
+        [1, 1, 1]
+    ],
+    [
+        [1, 1, 0],
+        [0, 1, 1]
+    ],
+    [
+        [1, 0],
+        [1, 0],
+        [1, 1]
+    ]
+]
+
 // //2. game loop
 // function update() {
 //     draw()
@@ -125,7 +149,6 @@ document.addEventListener('keydown', event => {
             piece.position.x--
         }
     }
-
     if( event.key === 'ArrowDown'){
         piece.position.y++
         if (checkCollision()){
@@ -155,6 +178,11 @@ function solidifyPiece (){
             }
         } )
     })
+
+// get random shape
+piece.shape = PIECES[Math.floor(Math.random() * PIECES.length)]
+// reset position
+
 
     piece.position.x = 0
     piece.position.y = 0
