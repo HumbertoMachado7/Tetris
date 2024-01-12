@@ -157,6 +157,22 @@ document.addEventListener('keydown', event => {
             removeRows()
         }
     }
+
+    if (event.key === 'ArrowUp'){
+        const rotated = []
+
+        for (let i=0; i< piece.shape[0].length; i++){
+            const row = []
+
+            for(let j= piece.shape.length - 1; j >= 0;j-- ){
+                row.push(piece.shape[j][i])
+            }
+
+            rotated.push (row)
+        }
+
+        piece.shape = rotated
+    }
 })
 // Ver colisiones
 function checkCollision() {
@@ -180,7 +196,7 @@ function solidifyPiece (){
     })
 
 // reset position
-    piece.position.x = Math.floor(BOARD_WIDTH / 2 - 2)
+    piece.position.x = Math.floor(Math.random() * (BOARD_WIDTH / 2))
     piece.position.y = 0
 // get random shape
     piece.shape = PIECES[Math.floor(Math.random() * PIECES.length)]
