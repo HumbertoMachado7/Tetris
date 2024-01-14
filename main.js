@@ -3,6 +3,7 @@ import './style.css'
 //1. inicializar el canvas
 const canvas = document.querySelector('canvas')
 const context = canvas.getContext('2d')
+const $score = document.querySelector('span')
 
 const BLOCK_SIZE = 20
 const BOARD_WIDTH = 14
@@ -79,6 +80,15 @@ const PIECES = [
         [1, 0],
         [1, 0],
         [1, 1]
+    ],
+    [
+        [0, 1],
+        [0, 1],
+        [1, 1]
+    ],
+    [
+        [0, 1, 1],
+        [1, 1, 0]
     ]
 ]
 
@@ -135,7 +145,7 @@ function draw() {
             }
         })
     })
-    document.querySelector('span').innerText = score
+    $score.innerText = score
 }
 
 document.addEventListener('keydown', event => {
