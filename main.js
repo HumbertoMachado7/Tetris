@@ -1,13 +1,10 @@
 import './style.css'
+import {BOARD_WIDTH, BOARD_HEIGHT, BLOCK_SIZE, EVENT_MOVEMENTS} from './consts'
 
 //1. inicializar el canvas
 const canvas = document.querySelector('canvas')
 const context = canvas.getContext('2d')
 const $score = document.querySelector('span')
-
-const BLOCK_SIZE = 20
-const BOARD_WIDTH = 14
-const BOARD_HEIGHT = 30
 
 let score = 0
 
@@ -122,20 +119,20 @@ function draw() {
 }
 
 document.addEventListener('keydown', event => {
-    if( event.key === 'ArrowLeft') {
+    if( event.key === EVENT_MOVEMENTS.LEFT) {
         piece.position.x--
         if (checkCollision()){
             piece.position.x++
         }
     }
 
-    if( event.key === 'ArrowRight'){
+    if( event.key === EVENT_MOVEMENTS.RIGHT){
         piece.position.x++
         if (checkCollision()){
             piece.position.x--
         }
     }
-    if( event.key === 'ArrowDown'){
+    if( event.key === EVENT_MOVEMENTS.DOWN){
         piece.position.y++
         if (checkCollision()){
             piece.position.y--
@@ -144,7 +141,7 @@ document.addEventListener('keydown', event => {
         }
     }
 
-    if (event.key === 'ArrowUp'){
+    if (event.key === EVENT_MOVEMENTS.UP){
         const rotated = []
 
         for (let i=0; i< piece.shape[0].length; i++){
@@ -210,7 +207,7 @@ function removeRows () {
         board.splice(y, 1)
         const newRow = Array (BOARD_WIDTH).fill(0)
         board.unshift(newRow)
-        score += 1000
+        score += 10
     })
 }
 
